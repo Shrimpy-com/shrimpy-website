@@ -3,105 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnHub - Online Education</title>
+    <title>EduSmart | Learn the Essentials</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
         header {
-            background: #0277bd;
-            color: #fff;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        nav a {
-            color: #fff;
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
             text-decoration: none;
-            margin-left: 20px;
         }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
         .hero {
-            background: #e1f5fe;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
             text-align: center;
-            padding: 4rem 2rem;
         }
+
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
         }
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 20px;
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
         }
-        .courses {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+
+        .search-bar {
+            width: 100%;
+            max-width: 500px;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
         }
+
+        .search-bar:focus {
+            border-color: var(--primary);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
         .card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 300px;
-            padding: 1.5rem;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
         .card h3 {
-            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .keyword-tag {
+            background-color: #eff6ff;
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
         footer {
-            background: #333;
-            color: #fff;
+            background-color: var(--card-bg);
+            border-top: 1px solid #e2e8f0;
+            padding: 2rem;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h2>LearnHub</h2>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Courses</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+        <nav class="navbar">
+            <a href="#" class="logo">EduSmart</a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Subjects</a>
+                <a href="#">Resources</a>
+            </div>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>Advance Your Skills Online</h1>
-        <p>Explore top-rated courses taught by industry experts.</p>
+        <h1>Master Your Core Subjects</h1>
+        <p>Explore essential learning keywords and concepts to boost your knowledge today.</p>
+        <input type="text" class="search-bar" placeholder="Search keywords like Math, Science...">
     </section>
 
-    <div class="container">
-        <h2>Popular Courses</h2>
-        <div class="courses">
+    <main class="main-content">
+        <div class="grid">
+            
+            <!-- Math Card -->
             <div class="card">
-                <h3>HTML & CSS Basics</h3>
-                <p>Learn how to build modern and responsive websites from scratch.</p>
+                <div class="card-icon">📐</div>
+                <h3>Mathematics</h3>
+                <p>Build strong analytical skills by mastering numbers, logic, patterns, and shapes.</p>
+                <div class="keywords">
+                    <span class="keyword-tag">Algebra</span>
+                    <span class="keyword-tag">Geometry</span>
+                    <span class="keyword-tag">Calculus</span>
+                    <span class="keyword-tag">Fractions</span>
+                </div>
             </div>
+
+            <!-- Science Card -->
             <div class="card">
-                <h3>JavaScript for Beginners</h3>
-                <p>Add interactivity to your web pages with core JavaScript logic.</p>
+                <div class="card-icon">🔬</div>
+                <h3>Science</h3>
+                <p>Discover how the physical world works through observation, data, and experimentation.</p>
+                <div class="keywords">
+                    <span class="keyword-tag">Physics</span>
+                    <span class="keyword-tag">Chemistry</span>
+                    <span class="keyword-tag">Biology</span>
+                    <span class="keyword-tag">Astronomy</span>
+                </div>
             </div>
+
+            <!-- Technology Card -->
             <div class="card">
-                <h3>Python Programming</h3>
-                <p>Master data structures, algorithms, and practical programming.</p>
+                <div class="card-icon">💻</div>
+                <h3>Technology</h3>
+                <p>Learn the tools and modern languages that build the future of software and hardware.</p>
+                <div class="keywords">
+                    <span class="keyword-tag">Coding</span>
+                    <span class="keyword-tag">Algorithms</span>
+                    <span class="keyword-tag">Data Science</span>
+                    <span class="keyword-tag">AI</span>
+                </div>
             </div>
+
         </div>
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2026 LearnHub. All rights reserved.</p>
+        <p>&copy; 2026 EduSmart Platform. Clean, modern, and simple learning.</p>
     </footer>
 
 </body>
